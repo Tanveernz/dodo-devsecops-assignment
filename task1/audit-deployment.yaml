@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audit-service
+  namespace: payments
+  labels:
+    app: audit-service
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: audit-service
+
+  template:
+    metadata:
+      labels:
+        app: audit-service
+
+    spec:
+      containers:
+        - name: audit-service
+          image: tanveernz/audit-service:v1
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8081
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 5
