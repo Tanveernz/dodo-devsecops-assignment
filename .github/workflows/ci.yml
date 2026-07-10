@@ -47,7 +47,7 @@ jobs:
 
       - name: Run Gitleaks
         run: |
-          gitleaks dir --source . --redact
+           gitleaks detect --source . --redact --verbose
 
       - name: Run Semgrep
         uses: returntocorp/semgrep-action@v1
