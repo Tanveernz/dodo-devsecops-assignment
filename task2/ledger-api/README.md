@@ -1,14 +1,32 @@
-# ledger-api
+# Task 2 - Secure CI/CD Pipeline
 
-Payments microservice for tokenising PANs and serving transaction metadata.
-Deployed on Kubernetes in the `payments` namespace.
+## Objective
 
-## Endpoints
+Build a secure software delivery pipeline that automatically validates code before deployment.
 
-| Method | Path            | Description                          |
-|--------|-----------------|--------------------------------------|
-| GET    | `/health`       | Liveness check                       |
-| POST   | `/tokenize`     | `{"pan": "..."}` → opaque token      |
-| GET    | `/transactions` | Recent transaction records           |
-| POST   | `/import`       | Import a YAML configuration blob     |
-| GET    | `/fetch?url=`   | Fetch a remote resource by URL       |
+## Pipeline
+
+GitHub Actions performs the following stages:
+
+- Docker Image Build
+- Trivy Filesystem Scan
+- Trivy Image Scan
+- Semgrep Static Analysis
+- Gitleaks Secret Detection
+- Push Image to GitHub Container Registry (GHCR)
+
+## Security Gates
+
+| Tool | Purpose | Fail Policy |
+|-------|----------|------------|
+| Trivy | Vulnerability Scan | Fail on Critical findings |
+| Semgrep | Static Analysis | Fail on High severity |
+| Gitleaks | Secret Detection | Block hardcoded secrets |
+
+## GitOps
+
+Deployment is managed using ArgoCD.
+
+Git becomes the single source of truth.
+
+Automatic synchronization and self-healing are enabled.
