@@ -132,6 +132,9 @@ The repository follows a defense-in-depth approach:
 - Gitleaks
 - GHCR
 
+
+This submission focuses on workload hardening, secure delivery, and GitOps. Istio, full secret encryption with Sealed Secrets, and the Task 4 recon/pentest report were planned next steps but were not fully completed within the timebox.
+
 ---
 
 # Screenshots
