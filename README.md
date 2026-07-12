@@ -4,7 +4,7 @@
 
 This repository contains my submission for the Dodo Payments Security & DevSecOps Engineer Technical Assessment.
 
-The project focuses on securing a Kubernetes-based payment microservice through workload hardening, secure CI/CD, GitOps, and zero-trust networking principles.
+The project focuses on securing a Kubernetes-based payment microservice through workload hardening, secure CI/CD, GitOps, and zero-trust security principles.
 
 ---
 
@@ -26,12 +26,12 @@ The project focuses on securing a Kubernetes-based payment microservice through 
 │
 ├── task3/
 │   ├── ArgoCD
-│   └── Service Mesh
+│   └── GitOps
 │
 ├── task4/
-│   ├── Recon Report
-│   ├── Pentest Report
-│   └── Screenshots
+│   ├── README.md
+│   ├── reconnaissance.md
+│   └── penetration-test-report.md
 │
 ├── architecture/
 └── screenshots/
@@ -69,7 +69,7 @@ Implemented:
 
 - GitHub Actions
 - Docker Image Build
-- GitHub Container Registry
+- GitHub Container Registry (GHCR)
 - Trivy Filesystem Scan
 - Trivy Image Scan
 - Semgrep SAST
@@ -78,19 +78,14 @@ Implemented:
 
 ---
 
-## Task 3 – Zero Trust
+## Task 3 – GitOps
 
 Implemented:
 
-- GitOps deployment using ArgoCD
-- Automated Sync
+- ArgoCD
+- Automated Synchronization
 - Drift Detection
-- Self Heal
-
-Additional work planned:
-
-- Istio mTLS
-- Authorization Policies
+- Self Healing
 
 ---
 
@@ -100,18 +95,19 @@ Included:
 
 - Reconnaissance Report
 - Penetration Test Report
-- Risk Analysis
-- Remediation Recommendations
+- Risk Assessment
+- Security Recommendations
 
 ---
 
 # Security Decisions
 
-Instead of relying on developers remembering security best practices, security controls were enforced through Kubernetes policies and the CI/CD pipeline.
+Security was implemented using a defense-in-depth approach.
 
-The repository follows a defense-in-depth approach:
+Implemented controls include:
 
 - Least Privilege RBAC
+- Dedicated Service Accounts
 - Secure Containers
 - Secret Management
 - GitOps
@@ -130,19 +126,22 @@ The repository follows a defense-in-depth approach:
 - Trivy
 - Semgrep
 - Gitleaks
-- GHCR
+- GitHub Container Registry (GHCR)
 
+---
 
-This submission focuses on workload hardening, secure delivery, and GitOps. Istio, full secret encryption with Sealed Secrets, and the Task 4 recon/pentest report were planned next steps but were not fully completed within the timebox.
+# Future Improvements
+
+Given additional time, I would extend this project by implementing:
+
+- Cosign image signing
+- SLSA provenance
+- Istio service mesh with mTLS
+- Sealed Secrets
+- Runtime threat detection
 
 ---
 
 # Screenshots
 
-<<<<<<< HEAD
-Screenshots demonstrating deployments, pipeline execution, ArgoCD synchronization, and Kubernetes resources are available inside the `screenshots/` directory.
-=======
-Screenshots demonstrating deployments, pipeline execution, ArgoCD synchronization, and Kubernetes resources are available inside the `screenshots/` directory.  
-
-This submission focuses on workload hardening, secure delivery, and GitOps. Istio, full secret encryption with Sealed Secrets, and the Task 4 recon/pentest report were planned next steps but were not fully completed within the timebox.
->>>>>>> 1892018 (Final documentation updates)
+Screenshots demonstrating Kubernetes deployments, GitHub Actions, ArgoCD synchronization, RBAC, Kyverno policies, and networking are available in the `screenshots/` directory.
