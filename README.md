@@ -139,4 +139,10 @@ This submission focuses on workload hardening, secure delivery, and GitOps. Isti
 
 # Screenshots
 
+<<<<<<< HEAD
 Screenshots demonstrating deployments, pipeline execution, ArgoCD synchronization, and Kubernetes resources are available inside the `screenshots/` directory.
+=======
+Screenshots demonstrating deployments, pipeline execution, ArgoCD synchronization, and Kubernetes resources are available inside the `screenshots/` directory.  
+
+This submission focuses on workload hardening, secure delivery, and GitOps. Istio, full secret encryption with Sealed Secrets, and the Task 4 recon/pentest report were planned next steps but were not fully completed within the timebox.
+>>>>>>> 1892018 (Final documentation updates)
